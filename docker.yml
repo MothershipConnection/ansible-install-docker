@@ -2,7 +2,7 @@
 - hosts: all
   become: yes
   vars:
-    docker_compose_version: "1.29.2"
+    docker_compose_version: "2.4.1"
   tasks:
 
     - name: Update apt cache
@@ -31,7 +31,7 @@
 
     - name: Add apt repository for stable version
       apt_repository:
-        repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable
+        repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable
         state: present
 
     - name: Install Docker
